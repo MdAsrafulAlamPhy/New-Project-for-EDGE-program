@@ -7,8 +7,6 @@ df = pd.read_csv('C:\python\cwurData.csv')
 universities_by_country = df.groupby('country')['institution'].nunique().reset_index()
 universities_by_country = universities_by_country.rename(columns={'institution': 'total_universities'})
 
-# Sort by number of universities (optional)
-universities_by_country = universities_by_country.sort_values(by='total_universities', ascending=False)
 
 # Plot
 plt.figure(figsize=(12, 8))
@@ -23,9 +21,6 @@ plt.show()
 
 # Group by country and sum patents
 patents_by_country = df.groupby('country')['patents'].sum().reset_index()
-
-# Sort values for better visualization (optional)
-patents_by_country = patents_by_country.sort_values(by='patents', ascending=False)
 plt.figure(figsize=(12, 8))
 sns.barplot(x='country', y='patents', data=patents_by_country, palette='viridis')
 
